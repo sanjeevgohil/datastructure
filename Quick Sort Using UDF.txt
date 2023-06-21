@@ -1,0 +1,58 @@
+Quick Sort Using UDF
+
+#include<iostream.h>
+#include<conio.h>
+void qsort(int a[],int,int);
+void main()
+{
+	int i,f=0,l=9,a[10];
+	clrscr();
+	for(i=0;i<=9;i++)
+	{
+		cout<<"\nEnter Number :";
+		cin>>a[i];
+	}
+
+	qsort(a,f,l);
+
+	cout<<"\nFinal Output :\n";
+	for(i=0;i<=9;i++)
+	{
+		cout<<"\nNumber is :"<<a[i];
+	}
+	getch();
+}
+void qsort(int a[],int f,int l)
+{
+	int temp,hi,lo,mid;
+	hi = f;
+	lo = l;
+	mid = a[(f+l)/2];
+	while(hi <= lo)
+	{
+		while(a[hi] < mid)
+		{
+			hi++;
+		}
+		while(a[lo] > mid)
+		{
+			lo--;
+		}
+		if(hi <= lo)
+		{
+			temp = a[hi];
+			a[hi] = a[lo];
+			a[lo] = temp;
+			hi++;
+			lo--;
+		}
+	}
+	if(f < lo)
+	{
+		qsort(a,f,lo);
+	}
+	if(hi < l)
+	{
+		qsort(a,hi,l);
+	}
+}
